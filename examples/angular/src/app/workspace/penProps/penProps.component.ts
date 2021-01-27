@@ -490,7 +490,7 @@ export class PenPropsComponent implements OnInit, OnChanges {
 
     if (item) {
       item.checked = true;
-      this.pen.iconFamily = 'topology';
+      this.pen.iconFamily = 'energy';
       this.pen.icon = String.fromCharCode(+item.unicode);
     } else {
       this.pen.icon = '';

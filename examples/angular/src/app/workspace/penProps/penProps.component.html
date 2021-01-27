@@ -998,7 +998,7 @@
       <div class="flex input-line middle mv10 pt10 border-top">
         <label>字体图标</label>
         <div class="pointer icon" (click)="show.iconDlg = true">
-          <i *ngIf="icon" class="topology {{ icon.class }}"></i>
+          <i *ngIf="icon" class="energy {{ icon.class }}"></i>
           <div *ngIf="!icon" class="image-upload">
             <i class="iconfont icon-add inline"></i>
           </div>
@@ -1014,7 +1014,7 @@
             <div class="blank">空</div>
           </div>
           <div class="icon" *ngFor="let item of icons" [class.active]="item.checked" (click)="onClickIcon(item)">
-            <i class="topology {{ item.class }}"></i>
+            <i class="energy {{ item.class }}"></i>
           </div>
         </div>
       </div>
