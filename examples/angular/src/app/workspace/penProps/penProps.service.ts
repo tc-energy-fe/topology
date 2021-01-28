@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/http/http.service';
 
-import * as energyIconFont from 'src/assets/font/energy/iconfont.json';
+import energyIconFont from 'src/assets/font/energy/iconfont.json';
 
 @Injectable()
 export class PenPropsService {
@@ -12,8 +12,8 @@ export class PenPropsService {
       return {
         class: `${energyIconFont.css_prefix_text}${font.font_class}`,
         unicode: font.unicode_decimal
-      }
-    })
+      };
+    });
   }
 }
 

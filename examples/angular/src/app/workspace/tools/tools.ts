@@ -228,7 +228,8 @@ export const Tools = [
             height: 100
           },
           name: 'image',
-          image: '/assets/img/logo.png'
+          icon: '\ue60f',
+          iconFamily: 'energy'
         }
       },
       {
