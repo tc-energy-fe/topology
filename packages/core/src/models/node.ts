@@ -28,6 +28,7 @@ export class Node extends Pen {
   iconFamily: string;
   iconSize: number;
   iconColor: string;
+  iconRotate: number;
 
   image: string;
   lastImage: string;
@@ -110,6 +111,7 @@ export class Node extends Pen {
     this.iconFamily = json.iconFamily;
     this.iconSize = +json.iconSize;
     this.iconColor = json.iconColor;
+    this.iconRotate = json.iconRotate;
 
     this.image = json.image;
     if (json.imgNaturalWidth) {
@@ -456,10 +458,9 @@ export class Node extends Pen {
           w = (this.imgNaturalWidth / this.imgNaturalHeight) * h;
         }
       }
-      if (this.name !== 'image') {
-        x += (rect.width - w) / 2;
-        y += (rect.height - h) / 2;
-      }
+      x += (rect.width - w) / 2;
+      y += (rect.height - h) / 2;
+
       switch (this.imageAlign) {
         case 'top':
           y = rect.y;
@@ -490,6 +491,13 @@ export class Node extends Pen {
           y = rect.ey - h;
           break;
       }
+
+      if (this.iconRotate) {
+        ctx.translate(rect.center.x, rect.center.y);
+        ctx.rotate((this.iconRotate * Math.PI) / 180);
+        ctx.translate(-rect.center.x, -rect.center.y);
+      }
+
       ctx.drawImage(this.img, x, y, w, h);
       ctx.restore();
       return;
@@ -810,6 +818,8 @@ export class Node extends Pen {
     }
     this.rect.x = center.x - (center.x - this.rect.x) * scale;
     this.rect.y = center.y - (center.y - this.rect.y) * scale;
+    this.textOffsetX *= scale;
+    this.textOffsetY *= scale;
     this.z *= scale;
     this.rect.width *= scale;
     this.rect.height *= scale;
