@@ -272,6 +272,10 @@ export class PenPropsComponent implements OnInit, OnChanges {
       {
         id: 2,
         name: 'Websocket事件'
+      },
+      {
+        id: 3,
+        name: 'MQTT'
       }
     ],
     noDefaultOption: true
@@ -290,12 +294,20 @@ export class PenPropsComponent implements OnInit, OnChanges {
         name: '执行动画'
       },
       {
+        id: 5,
+        name: '停止动画'
+      },
+      {
         id: 2,
         name: '执行自定义函数'
       },
       {
         id: 3,
         name: '执行window函数'
+      },
+      {
+        id: 4,
+        name: '更新属性数据'
       }
     ],
     noDefaultOption: true

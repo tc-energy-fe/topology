@@ -58,49 +58,13 @@ export class WorkspaceHeaderComponent implements OnInit, OnDestroy {
     children: [{
       name: '行业解决方案',
       router: '/search'
-    }, {}, {
-      name: '产品介绍',
-      url: 'https://juejin.im/post/5d6c88726fb9a06b0e54ab35'
-    }, {
-      name: '技术支持',
-      url: 'https://www.yuque.com/alsmile/topology/aboutus#gWc5X'
-    }]
-  }, {
-    name: '社区',
-    children: [{
-      name: 'Github官网',
-      url: 'https://github.com/le5le-com'
-    }, {
-      name: '核心库',
-      url: 'https://github.com/le5le-com/topology'
-    }, {
-      name: '版本发布',
-      url: 'https://github.com/le5le-com/topology/releases'
-    }, {
-      name: '技术交流群',
-      url: 'https://www.yuque.com/alsmile/topology/aboutus#FRK4N'
     }]
   }, {
     name: '帮助',
     children: [{
-      name: '使用教程',
-      url: 'https://juejin.im/user/58b1336c570c3500696559f8/posts'
-    }, {
       name: '开发文档',
       url: 'https://www.yuque.com/alsmile/topology/umsiq3'
-    }, {}, {
-      name: '许可与申明',
-      dialog: 'license'
-    }, {
-      name: '服务与合作',
-      url: 'https://www.yuque.com/alsmile/topology/aboutus#gWc5X'
-    }, {}, {
-      name: '关于我们',
-      url: 'https://www.yuque.com/alsmile/topology/aboutus'
     }]
-  }, {
-    name: '技术交流群',
-    url: 'https://www.yuque.com/alsmile/topology/aboutus#FRK4N'
   }];
 
   cpPresetColors = [

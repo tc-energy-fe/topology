@@ -1077,6 +1077,12 @@
           <input class="input" [(ngModel)]="item.name" placeholder="websocket消息名" title="websocket中json格式下的event值" />
         </div>
       </div>
+      <div class="flex middle input-line mv10" *ngIf="item.type === 3">
+        <label>Topic</label>
+        <div>
+          <input class="input" [(ngModel)]="item.name" placeholder="订阅Topic"/>
+        </div>
+      </div>
       <div class="flex middle input-line mv10">
         <label>事件行为</label>
         <div>
@@ -1086,15 +1092,15 @@
       </div>
       <div class="flex input-line mv10 pt10">
         <label *ngIf="item.action === 0" class="mt3">链接地址</label>
-        <label *ngIf="item.action === 1" class="mt3">动画标签</label>
+        <label *ngIf="item.action === 1 || item.action === 5" class="mt3">动画标签</label>
         <label *ngIf="item.action === 2" class="mt3">函数代码</label>
         <label *ngIf="item.action === 3" class="mt3">函数名称</label>
+        <label *ngIf="item.action === 4" class="mt3">立即重绘</label>
         <div>
           <input *ngIf="item.action === 0 || item.action === 3" class="input" [(ngModel)]="item.value" />
-          <input *ngIf="item.action === 1" class="input" [(ngModel)]="item.value" placeholder="缺省执行自身动画" />
-          <textarea *ngIf="item.action === 2" class="input full" [(ngModel)]="item.value" rows="25"
-            [readonly]="readonly"
-            placeholder="可用参数：pen - 画笔数据。&#10;&#10;如果是websocket事件，params - websocket中json格式下的data"></textarea>
+          <input *ngIf="item.action === 1 || item.action === 5" class="input" [(ngModel)]="item.value" placeholder="缺省执行自身动画" />
+          <textarea *ngIf="item.action === 2" class="input full" [(ngModel)]="item.value" rows="10" [readonly]="readonly"></textarea>
+          <input *ngIf="item.action === 4" class="input" [(ngModel)]="item.params" placeholder="true"/>
         </div>
       </div>
       <div class="flex middle input-line mv10 pt10" *ngIf="item.action === 3">
@@ -1102,6 +1108,29 @@
         <div>
           <input class="input" [(ngModel)]="item.params" />
         </div>
+      </div>
+      <div class="gray" *ngIf="item.action === 2">
+        示例：console.log(pen, params, client, window.topology)
+        <br/>
+        <br/>
+        pen - 画笔数据。
+        <br/>
+        <br/>
+        params - 填写的函数参数/websocket中json格式下的data/MQTT的message。
+        <br/>
+        <br/>
+        client - websocket/MQTT（mqtt.js）的连接客户端。
+        <br/>
+        <br/>
+        window.topology - 画布组件
+      <div class="gray" *ngIf="item.action === 4">
+        仅当 params === 'false'时，不重绘。
+        <br/>
+        仅在websocket/mqtt事件中有效。
+        <br/>
+        推送数据格式必须为标准json字符串或数组：
+        <br/>
+        "[{{'{'}}"key": "pen属性名", "value": "新修改的值，可以为json"}]"
       </div>
     </div>
   </div>

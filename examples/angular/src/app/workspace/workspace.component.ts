@@ -316,6 +316,7 @@ export class WorkspaceComponent implements OnInit, OnDestroy {
   onOpenFile() {
     const input = document.createElement('input');
     input.type = 'file';
+    input.accept = '.json';
     input.onchange = (event) => {
       const elem: any = event.target;
       if (elem.files && elem.files[0]) {
@@ -382,38 +383,25 @@ export class WorkspaceComponent implements OnInit, OnDestroy {
           return;
         }
       }
-
-      const file = await this.service.Upload(blob, this.data.shared);
-      if (!file) {
-        return;
-      }
-      this.data.image = file.url;
+      console.log(this.data);
 
       if (this.data.component) {
         this.data.componentData = this.canvas.toComponent();
       }
 
-      const ret = await this.service.Save(this.data);
-      if (ret) {
-        Store.set('file', this.data);
-        const _noticeService: NoticeService = new NoticeService();
-        _noticeService.notice({
-          body: '保存成功！',
-          theme: 'success',
-        });
+      Store.set('file', this.data);
+      const _noticeService: NoticeService = new NoticeService();
+      _noticeService.notice({
+        body: '保存成功！',
+        theme: 'success',
+      });
 
-        if (!this.data.id || this.activateRoute.snapshot.queryParamMap.get('version')) {
-          this.data.id = ret.id;
-          this.router.navigate(['/workspace'], { queryParams: { id: this.data.id } });
-        } else {
-          Store.set('recently', {
-            id: this.data.id,
-            image: this.data.image,
-            name: this.data.name,
-            desc: this.data.desc,
-          });
-        }
-      }
+      Store.set('recently', {
+        id: this.data.id,
+        image: this.data.image,
+        name: this.data.name,
+        desc: this.data.desc,
+      });
     });
   }
 
@@ -545,7 +533,7 @@ export class WorkspaceComponent implements OnInit, OnDestroy {
         break;
     }
     console.log('onMessage:', event, data);
-  };
+  }
 
   onSignup() {
     location.href = `${environment.urls.account}?signup=true`;

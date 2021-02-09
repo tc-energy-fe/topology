@@ -60,4 +60,8 @@ export class FilePropsComponent implements OnInit {
     layout(this.canvas.data.pens, this.layout);
     this.canvas.updateProps(true, this.canvas.data.pens);
   }
+
+  onMqttConnect () {
+    this.canvas.openMqtt();
+  }
 }

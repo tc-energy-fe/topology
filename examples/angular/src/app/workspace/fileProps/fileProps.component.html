@@ -63,6 +63,26 @@
   </div>
 </div>
 
+<!-- MQTT设置 -->
+<div *ngIf="canvas && !data.component">
+  <div class="title">MQTT地址</div>
+  <div class="ph15 pv10">
+    <label>URL地址*</label>
+    <input class="input full" [(ngModel)]="canvas.data.mqttUrl" placeholder="MQTT URL地址">
+    <label>Client ID（不能重复使用，可为空）</label>
+    <input class="input full" [(ngModel)]="canvas.data.mqttOptions.clientId">
+    <label>用户名</label>
+    <input class="input full" [(ngModel)]="canvas.data.mqttOptions.username">
+    <label>密码</label>
+    <input class="input full" [(ngModel)]="canvas.data.mqttOptions.password">
+    <label>Topics *</label>
+    <input class="input full" [(ngModel)]="canvas.data.mqttTopics">
+  </div>
+  <div class="flex middle mb10" style="padding-left: 0.15rem;">
+    <button class="button primary" (click)="onMqttConnect()">连接</button>
+  </div>
+</div>
+
 <div class="title">排版</div>
 <div class="ph15 pv5">
   <div class="flex middle mb10">
