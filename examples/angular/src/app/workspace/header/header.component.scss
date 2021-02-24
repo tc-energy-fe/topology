@@ -160,11 +160,11 @@ figure {
     border: 1px solid $color-border !important;
     cursor: pointer;
     min-width: 1.2rem !important;
-    width: 1.2rem !important;
-    height: 1.2rem !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
     padding: 0.1rem !important;
 
-    &:nth-child(5n + 0) {
+    &:nth-child(4n + 0) {
       margin-right: 0;
     }
 
@@ -174,9 +174,10 @@ figure {
 
     img {
       margin: 0 !important;
-      width: 1rem !important;
-      height: 1rem !important;
+      width: 100% !important;
+      height: 100% !important;
       pointer-events: none;
+      object-fit: cover;
     }
 
     .icon-delete {

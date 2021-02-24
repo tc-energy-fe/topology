@@ -153,6 +153,12 @@ export class WorkspaceHeaderComponent implements OnInit, OnDestroy {
     });
   }
 
+  onClickItem(item: Object) {
+    this.showFigure = false;
+    this.onMenu('openData', item);
+    console.log('open-item:', item);
+  }
+
 
   onClickMenu(event: MouseEvent) {
     if ((event.target as HTMLElement).nodeName === 'A') {

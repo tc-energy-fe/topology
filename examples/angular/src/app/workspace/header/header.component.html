@@ -34,8 +34,9 @@
           <figure>
             <div *ngIf="recently.length" class="mb20">
               <div class="flex wrap">
-                <a class="topo" *ngFor="let item of recently;let i=index" [title]="item.name" routerLink="/workspace"
-                  [queryParams]="{ id: item.id, version: item.version }" (click)="showFigure=false">
+                <a class="topo" *ngFor="let item of recently;let i=index" [title]="item.name"
+                  routerLink="/workspace"
+                  (click)="onClickItem(item)">
                   <img [appImgAuthSrc]="item.image" />
                   <i class="iconfont icon-delete" (click)="onRemoveRecently($event, i)"></i>
                 </a>

@@ -12,6 +12,8 @@ import { WorkspaceService } from './workspace.service';
 import { environment } from 'src/environments/environment';
 import { CoreService } from '../core/core.service';
 
+import uuid from 'uuid';
+
 declare var C2S: any;
 declare var JSZip: any;
 
@@ -119,6 +121,13 @@ export class WorkspaceComponent implements OnInit, OnDestroy {
         });
         this.onNew();
         this.onOpenFile();
+        break;
+      case 'openData':
+        setTimeout(() => {
+          this.selection = null;
+        });
+        this.onNew();
+        this.onOpenData(event.data);
         break;
       case 'load':
         this.onOpenFile();
@@ -285,6 +294,19 @@ export class WorkspaceComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/workspace');
   }
 
+  onOpenData(item: any) {
+    this.data = item;
+
+    Store.set('lineName', item.data.lineName);
+    Store.set('fromArrow', item.data.fromArrow);
+    Store.set('toArrow', item.data.toArrow);
+    Store.set('scale', item.data.scale);
+    Store.set('locked', item.data.locked);
+    this.canvas.open(item.data);
+
+    Store.set('file', this.data);
+  }
+
   async onOpen(data: { id: string; version?: string }) {
     const ret = await this.service.Get(data);
     if (!ret) {
@@ -376,13 +398,14 @@ export class WorkspaceComponent implements OnInit, OnDestroy {
     if (!this.canvas) {
       return;
     }
+    console.log(Store.get());
     this.data.data = this.canvas.data;
-    this.canvas.toImage(2, 'image/png', 1, async (blob) => {
-      if (this.data.id && !this.coreService.isVip(this.user)) {
-        if (!(await this.service.DelImage(this.data.image))) {
-          return;
-        }
-      }
+    const dataURL = this.canvas.toImage(2, 'image/webp', 0.5, async (blob) => {
+      // if (this.data.id && !this.coreService.isVip(this.user)) {
+      //   if (!(await this.service.DelImage(this.data.image))) {
+      //     return;
+      //   }
+      // }
       console.log(this.data);
 
       if (this.data.component) {
@@ -396,12 +419,14 @@ export class WorkspaceComponent implements OnInit, OnDestroy {
         theme: 'success',
       });
 
-      Store.set('recently', {
-        id: this.data.id,
-        image: this.data.image,
-        name: this.data.name,
-        desc: this.data.desc,
-      });
+    });
+    this.data.image = dataURL;
+    Store.set('recently', {
+      id: this.data.id || uuid(),
+      image: this.data.image,
+      name: this.data.name,
+      desc: this.data.desc,
+      data: this.data.data
     });
   }
 

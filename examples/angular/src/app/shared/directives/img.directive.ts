@@ -14,7 +14,7 @@ export class ImageAuthDirective implements OnInit {
     this.renderer.setAttribute(
       this.el.nativeElement,
       'src',
-      `${this.appImgAuthSrc}?Authorization=${Cookie.get(environment.token)}`
+      `${this.appImgAuthSrc}`
     );
   }
 }
