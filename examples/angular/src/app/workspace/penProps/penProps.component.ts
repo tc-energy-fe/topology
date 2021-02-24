@@ -19,7 +19,7 @@ export class PenPropsComponent implements OnInit, OnChanges {
   };
   @Input() readonly = false;
 
-  tab = 1;
+  tab: Number = 1;
 
   pen: any;
   icon: any;

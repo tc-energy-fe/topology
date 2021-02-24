@@ -1,12 +1,12 @@
 <div class="nav nav-tab">
-  <div class="item" [class.active]="tab===1" (click)="tab=1">外观</div>
-  <div class="item" [class.active]="tab===2" (click)="tab=2" *ngIf="selection.pen">事件</div>
-  <div class="item" [class.active]="tab===3" (click)="tab=3" *ngIf="selection.pen">动效</div>
-  <div class="item" [class.active]="tab===4" (click)="tab=4" *ngIf="selection.pen">数据</div>
-  <div class="item" [class.active]="tab===5" (click)="tab=5">结构</div>
+  <div class="item" [class.active]="tab === 1" (click)="tab = 1">外观</div>
+  <div class="item" [class.active]="tab === 2" (click)="tab = 2" *ngIf="selection.pen">事件</div>
+  <div class="item" [class.active]="tab === 3" (click)="tab = 3" *ngIf="selection.pen">动效</div>
+  <div class="item" [class.active]="tab === 4" (click)="tab = 4" *ngIf="selection.pen">数据</div>
+  <div class="item" [class.active]="tab === 5" (click)="tab = 5">结构</div>
 </div>
 
-<div *ngIf="tab===1">
+<div *ngIf="tab === 1">
   <div class="group" *ngIf="selection.pens">
     <div class="title">对齐</div>
     <div>
@@ -1048,7 +1048,7 @@
   </div>
 
 </div>
-<div *ngIf="tab===2">
+<div *ngIf="tab === 2">
   <div class="p10">
     <button class="button primary full" (click)="onAddEvent()">添加事件</button>
   </div>
@@ -1123,6 +1123,7 @@
         <br/>
         <br/>
         window.topology - 画布组件
+      </div>
       <div class="gray" *ngIf="item.action === 4">
         仅当 params === 'false'时，不重绘。
         <br/>
@@ -1135,7 +1136,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="tab===3">
+<div *ngIf="tab === 3">
   <div class="group">
     <div class="title">
       <div class="full">动画</div>
@@ -1610,7 +1611,7 @@
   </div>
 </div>
 
-<div *ngIf="tab===4">
+<div *ngIf="tab === 4">
   <div class="group">
     <b>ID：</b>
     {{pen.id}}
@@ -1667,7 +1668,7 @@
 
 </div>
 
-<div *ngIf="tab===5" class="tree">
+<div *ngIf="tab === 5" class="tree">
   <div *ngIf="selection.pen">
     <app-pen-tree-item [pen]="selection.pen"></app-pen-tree-item>
   </div>
